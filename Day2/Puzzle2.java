@@ -10,6 +10,7 @@ public class Puzzle2 {
         File file = new File("src/com/AoC/Day2/input.txt");
 
         int horizontal = 0;
+        int aim = 0;
         int depth = 0;
         try {
             Scanner scanner = new Scanner(file);
@@ -20,19 +21,20 @@ public class Puzzle2 {
 
                 switch (direction) {
                     case "up":
-                        depth -= currentNumber;
+                        aim -= currentNumber;
                         break;
                     case "down":
-                        depth += currentNumber;
+                        aim += currentNumber;
                         break;
                     case "forward":
                         horizontal += currentNumber;
+                        depth += aim * currentNumber;
                         break;
                 }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return horizontal * depth;
+        return depth * horizontal;
     }
 }
